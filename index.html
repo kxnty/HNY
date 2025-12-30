@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Postcard View</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function(){
+          emailjs.init("Aq0YLSE-ivxrhfRNu"); 
+       })();
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <section id="login-section" class="active">
+        <h1>Happy New Year</h1>
+        <p>This is a message from Karn, please enter your name.</p>
+        <div class="input-group">
+            <span class="prefix">@</span>
+            <input type="text" id="username-input" placeholder="username">
+        </div>
+        <button class="btn-primary" onclick="checkUser()">Enter</button>
+    </section>
+
+    <section id="intro-section" class="hidden">
+        <div class="intro-content">
+            <h1>Thank you for 2025,<br>I love you all</h1>
+        </div>
+        <div class="swipe-indicator" onclick="nextSection('gallery-section')">
+            <p>Click to see more</p>
+            <div class="arrow-up"></div>
+        </div>
+    </section>
+
+    <section id="gallery-section" class="hidden">
+        
+        <div class="stack-wrapper">
+            <p class="swipe-hint">Swipe to see more</p>
+            <div class="card-stack" id="card-stack">
+                <div class="stack-card" style="background-image: url('assets/IMG_5644.jpg');"></div>
+                <div class="stack-card" style="background-image: url('assets/IMG_5572.jpg');"></div>
+                <div class="stack-card" style="background-image: url('assets/IMG_5613.jpg');"></div>
+                <div class="stack-card" style="background-image: url('assets/IMG_5767.jpg');"></div>
+                <div class="stack-card" style="background-image: url('assets/IMG_5771.jpg');"></div>
+                <div class="stack-card" style="background-image: url('assets/IMG_5786.jpg');"></div>
+                <div class="stack-card" style="background-image: url('assets/IMG_5787.jpg');"></div>
+            </div>
+        </div>
+
+        <div id="gallery-end-content" class="end-content">
+            <h1>Let's begin<br>2026 together</h1>
+            <button class="btn-primary" onclick="nextSection('pre-postcard-section')">Next</button>
+        </div>
+    </section>
+
+    <section id="pre-postcard-section" class="hidden">
+        <h1>Ready to see your postcard?</h1>
+        <p class="description">
+            This is memory from my recent journeys. A New Year 2026 gift for you.
+        </p>
+        <div class="swipe-indicator" onclick="nextSection('gallery-section')">
+            <p>Click to continue</p>
+            <div class="arrow-up"></div>
+        </div>
+    </section>
+
+    <section id="postcard-section" class="hidden">
+        <h2 id="greeting-text">For You!</h2>
+        
+        <div class="card-container" onclick="flipCard()">
+            <div class="card" id="card">
+                <div class="card-face front">
+                    <img id="postcard-front" src="" alt="Front Postcard">
+                </div>
+                <div class="card-face back">
+                    <img id="postcard-back" src="assets/back.png" alt="Back Postcard">
+                </div>
+            </div>
+        </div>
+
+        <p class="hint">Tap card to flip</p>
+
+        <div class="action-buttons">
+            <button class="btn-secondary" onclick="downloadPostcard()">Download</button>
+            <button class="btn-primary" onclick="goToContact()">Confirm</button>
+        </div>
+    </section>
+
+    <section id="contact-section" class="hidden">
+        <h2>Leave a Message</h2>
+        <p>Send a message to N'Karn.</p>
+        <form id="contact-form" onsubmit="sendEmail(event)">
+            <textarea id="message" placeholder="Type your message here..." required></textarea>
+            <button type="submit" class="btn-primary">Send Message</button>
+        </form>
+        <button class="btn-link" onclick="location.reload()">Back to Home</button>
+    </section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
